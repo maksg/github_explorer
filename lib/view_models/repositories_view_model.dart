@@ -1,6 +1,8 @@
+import 'package:github_explorer/api/api_request.dart';
 import 'package:github_explorer/models/repository.dart';
 
 class RepositoriesViewModel {
+  final APIRequest apiRequest = APIRequest();
   List<Repository> repositories = [];
   bool isLoading = false;
 
@@ -10,8 +12,7 @@ class RepositoriesViewModel {
     isLoading = true;
     onUpdateView?.call();
 
-    await Future.delayed(const Duration(seconds: 2));
-    repositories = [Repository(id: 'id', name: 'name')];
+    repositories = await apiRequest.fetchRepositories();
 
     isLoading = false;
     onUpdateView?.call();
