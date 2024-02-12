@@ -13,11 +13,8 @@ class Request {
   static Future<Request> create(String baseURL, Route route) async {
     final HttpClient client = HttpClient();
     final method = route.method.name;
-    final url = Uri.parse(baseURL + route.path);
-
-    if (route.method == HttpMethod.get) {
-      url.replace(queryParameters: route.parameters.map((key, value) => MapEntry(key, value?.toString())));
-    }
+    final parameters = route.method == HttpMethod.get ? route.parameters : <String, dynamic>{};
+    final url = Uri.https(baseURL, route.path, parameters);
 
     final clientRequest = await client.openUrl(method, url)
       ..headers.contentType = ContentType.json;

@@ -43,9 +43,9 @@ class RepositoriesViewState extends State<RepositoriesView> {
         height: 40,
         child: SearchBar(
           leading: const Icon(Icons.search),
-          hintText: "Search",
-          onSubmitted: (String userName) {
-            viewModel.fetchRepositories(userName);
+          hintText: 'Search',
+          onSubmitted: (String query) {
+            viewModel.searchRepositories(query);
           },
         ),
       ),

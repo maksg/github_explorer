@@ -18,9 +18,9 @@ class RepositoriesViewModel {
     onUpdateView?.call();
   }
 
-  Future<void> fetchRepositories(String userName) async {
+  Future<void> searchRepositories(String query) async {
     startLoading();
-    repositories = await apiRequest.fetchRepositories(userName);
+    repositories = (await apiRequest.searchRepositories(query)).items;
     finishLoading();
   }
 }
