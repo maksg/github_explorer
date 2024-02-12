@@ -15,7 +15,6 @@ class RepositoriesViewState extends State<RepositoriesView> {
   void initState() {
     super.initState();
     viewModel.onUpdateView = () => setState(() {});
-    viewModel.fetchRepositories();
   }
 
   @override
@@ -28,24 +27,45 @@ class RepositoriesViewState extends State<RepositoriesView> {
           style: TextStyle(color: Colors.white),
         ),
       ),
-      body: Builder(
-        builder: (context) {
-          if (viewModel.isLoading) {
-            return const Center(child: CircularProgressIndicator());
-          } else {
-            return ListView.builder(
-              padding: const EdgeInsets.all(8),
-              itemCount: viewModel.repositories.length,
-              itemBuilder: (context, index) {
-                return ListTile(
-                  title: Text(viewModel.repositories[index].name),
-                );
-              },
-            );
-          }
-        },
+      body: Column(
+        children: [
+          searchBar(),
+          Expanded(child: listView()),
+        ],
       ),
     );
+  }
+
+  Widget searchBar() {
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(16, 16, 16, 0),
+      child: SizedBox(
+        height: 40,
+        child: SearchBar(
+          leading: const Icon(Icons.search),
+          hintText: "Search",
+          onSubmitted: (String userName) {
+            viewModel.fetchRepositories(userName);
+          },
+        ),
+      ),
+    );
+  }
+
+  Widget listView() {
+    if (viewModel.isLoading) {
+      return const Center(child: CircularProgressIndicator());
+    } else {
+      return ListView.builder(
+        padding: const EdgeInsets.all(8),
+        itemCount: viewModel.repositories.length,
+        itemBuilder: (context, index) {
+          return ListTile(
+            title: Text(viewModel.repositories[index].name),
+          );
+        },
+      );
+    }
   }
 
   @override

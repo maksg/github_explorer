@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
       title: 'GitHub Explorer',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.indigo),
-        useMaterial3: true,
+        searchBarTheme: SearchBarThemeData(shadowColor: MaterialStateProperty.all(Colors.transparent)),
       ),
       home: const RepositoriesView(),
     );

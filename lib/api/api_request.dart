@@ -9,9 +9,8 @@ class APIRequest {
   final HttpClient client = HttpClient();
   final String baseURL = 'https://api.github.com/';
 
-  Future<List<Repository>> fetchRepositories() async {
-    const user = 'maksg';
-    final route = Route(path: 'users/$user/repos', method: HttpMethod.get, headers: {}, parameters: {});
+  Future<List<Repository>> fetchRepositories(String userName) async {
+    final route = Route(path: 'users/$userName/repos', method: HttpMethod.get, headers: {}, parameters: {});
     final request = await Request.create(baseURL, route);
     return await request.makeList(RepositorySerializer());
   }
