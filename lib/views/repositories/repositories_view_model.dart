@@ -8,7 +8,7 @@ class RepositoriesViewModel {
 
   Function()? onUpdateView;
 
-  RepositoriesViewModel({required this.apiRequest});
+  RepositoriesViewModel({ required this.apiRequest });
 
   void startLoading() {
     isLoading = true;

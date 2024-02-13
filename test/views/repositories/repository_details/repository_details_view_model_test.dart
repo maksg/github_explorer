@@ -27,7 +27,7 @@ void main() {
   });
 
   group('Test constructors', () {
-    test('Constructor should correctly assign variables', () {
+    test('Constructor should correctly assigned variables', () {
       expect(viewModel.apiRequest, apiRequest);
       expect(viewModel.repository, repository);
     });
