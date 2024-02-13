@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:github_explorer/view_models/repositories_view_model.dart';
+
+import 'package:github_explorer/views/repositories/repositories_view_model.dart';
+import 'package:github_explorer/views/repositories/rows/repositories_row.dart';
 
 class RepositoriesView extends StatefulWidget {
   const RepositoriesView({super.key});
@@ -56,13 +58,14 @@ class RepositoriesViewState extends State<RepositoriesView> {
     if (viewModel.isLoading) {
       return const Center(child: CircularProgressIndicator());
     } else {
-      return ListView.builder(
+      return ListView.separated(
         padding: const EdgeInsets.all(8),
         itemCount: viewModel.repositories.length,
         itemBuilder: (context, index) {
-          return ListTile(
-            title: Text(viewModel.repositories[index].name),
-          );
+          return RepositoriesRow(repository: viewModel.repositories[index], apiRequest: viewModel.apiRequest);
+        },
+        separatorBuilder: (context, index) {
+          return Divider(color: Colors.black.withOpacity(0.14));
         },
       );
     }

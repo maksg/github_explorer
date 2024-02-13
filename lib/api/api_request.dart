@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:github_explorer/api/endpoints.dart';
 import 'package:github_explorer/api/request.dart';
-import 'package:github_explorer/models/repository.dart';
+import 'package:github_explorer/models/repositories.dart';
 
 class APIRequest {
   final HttpClient client = HttpClient();
