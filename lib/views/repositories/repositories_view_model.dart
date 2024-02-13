@@ -2,11 +2,13 @@ import 'package:github_explorer/api/api_request.dart';
 import 'package:github_explorer/models/repository.dart';
 
 class RepositoriesViewModel {
-  final APIRequest apiRequest = APIRequest();
+  final APIRequest apiRequest;
   List<Repository> repositories = [];
   bool isLoading = false;
 
   Function()? onUpdateView;
+
+  RepositoriesViewModel({required this.apiRequest});
 
   void startLoading() {
     isLoading = true;

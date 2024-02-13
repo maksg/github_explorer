@@ -1,18 +1,16 @@
 import 'dart:convert';
-import 'dart:io';
 
 import 'package:github_explorer/abstracts/base_request.dart';
 import 'package:github_explorer/abstracts/serializer.dart';
 
-class Request implements BaseRequest {
-  final HttpClientRequest? _request;
+class RequestMock implements BaseRequest {
+  final String response;
 
-  Request(this._request);
+  RequestMock(this.response);
 
   @override
   Future<String> make() async {
-    final response = await _request!.close();
-    return await response.transform(utf8.decoder).join();
+    return response;
   }
 
   @override

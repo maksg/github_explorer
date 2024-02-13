@@ -1,5 +1,5 @@
 import 'package:github_explorer/models/repository.dart';
-import 'package:github_explorer/api/serializer.dart';
+import 'package:github_explorer/abstracts/serializer.dart';
 
 class Repositories {
   List<Repository> items;

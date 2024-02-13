@@ -4,19 +4,19 @@ import 'package:github_explorer/views/repositories/repositories_view_model.dart'
 import 'package:github_explorer/views/repositories/rows/repositories_row.dart';
 
 class RepositoriesView extends StatefulWidget {
-  const RepositoriesView({super.key});
+  final RepositoriesViewModel viewModel;
+
+  const RepositoriesView({super.key, required this.viewModel});
 
   @override
   RepositoriesViewState createState() => RepositoriesViewState();
 }
 
 class RepositoriesViewState extends State<RepositoriesView> {
-  final RepositoriesViewModel viewModel = RepositoriesViewModel();
-
   @override
   void initState() {
     super.initState();
-    viewModel.onUpdateView = () => setState(() {});
+    widget.viewModel.onUpdateView = () => setState(() {});
   }
 
   @override
@@ -47,7 +47,7 @@ class RepositoriesViewState extends State<RepositoriesView> {
           leading: const Icon(Icons.search),
           hintText: 'Search',
           onSubmitted: (String query) {
-            viewModel.searchRepositories(query);
+            widget.viewModel.searchRepositories(query);
           },
         ),
       ),
@@ -55,14 +55,14 @@ class RepositoriesViewState extends State<RepositoriesView> {
   }
 
   Widget listView() {
-    if (viewModel.isLoading) {
+    if (widget.viewModel.isLoading) {
       return const Center(child: CircularProgressIndicator());
     } else {
       return ListView.separated(
         padding: const EdgeInsets.all(8),
-        itemCount: viewModel.repositories.length,
+        itemCount: widget.viewModel.repositories.length,
         itemBuilder: (context, index) {
-          return RepositoriesRow(repository: viewModel.repositories[index], apiRequest: viewModel.apiRequest);
+          return RepositoriesRow(repository: widget.viewModel.repositories[index], apiRequest: widget.viewModel.apiRequest);
         },
         separatorBuilder: (context, index) {
           return Divider(color: Colors.black.withOpacity(0.14));
@@ -73,7 +73,7 @@ class RepositoriesViewState extends State<RepositoriesView> {
 
   @override
   void dispose() {
-    viewModel.onUpdateView = null;
+    widget.viewModel.onUpdateView = null;
     super.dispose();
   }
 }

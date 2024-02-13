@@ -1,4 +1,4 @@
-import 'package:github_explorer/api/serializer.dart';
+import 'package:github_explorer/abstracts/serializer.dart';
 
 class Repository {
   int id;
@@ -28,7 +28,6 @@ class Repository {
     required this.openIssuesCount,
     this.license
   });
-
 }
 
 class RepositorySerializer extends Serializer<Repository> {
