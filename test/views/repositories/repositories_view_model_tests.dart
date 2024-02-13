@@ -18,6 +18,12 @@ void main() {
     viewModel = RepositoriesViewModel(apiRequest: apiRequest);
   });
 
+  group('Test constructors', () {
+    test('Constructor should correctly assign variables', () {
+      expect(viewModel.apiRequest, apiRequest);
+    });
+  });
+
   group('Test loadings', () {
     test('startLoading method should update isLoading and call onUpdateView', () async {
       viewModel.isLoading = false;
