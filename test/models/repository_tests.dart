@@ -6,7 +6,7 @@ import 'package:github_explorer/models/repository.dart';
 
 void main() {
   group('Test RepositorySerializer', () {
-    test('fromJSON method returns valid repository', () async {
+    test('fromJSON method should return valid repository', () async {
       final file = File('test/resources/api/search_repositories_response.json');
       final repositoryJSON = json.decode(await file.readAsString())['items'][0];
 

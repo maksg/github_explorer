@@ -16,7 +16,7 @@ void main() {
   });
 
   group('Test endpoints', () {
-    test('searchRepositories method returns valid repositories', () async {
+    test('searchRepositories method should return valid repositories', () async {
       final file = File('test/resources/api/search_repositories_response.json');
       requestManager.response = await file.readAsString();
       final repositories = await apiRequest.searchRepositories('axmol');
