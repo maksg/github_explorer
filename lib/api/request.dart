@@ -5,13 +5,13 @@ import 'package:github_explorer/abstracts/base_request.dart';
 import 'package:github_explorer/abstracts/serializer.dart';
 
 class Request implements BaseRequest {
-  final HttpClientRequest? _request;
+  final HttpClientRequest _request;
 
   Request(this._request);
 
   @override
   Future<String> make() async {
-    final response = await _request!.close();
+    final response = await _request.close();
     return await response.transform(utf8.decoder).join();
   }
 

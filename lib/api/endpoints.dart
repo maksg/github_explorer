@@ -9,3 +9,12 @@ class SearchRepositoriesEndpoint extends Route {
       parameters: { 'q' : query }
   );
 }
+
+class RepositoryIssuesEndpoint extends Route {
+  RepositoryIssuesEndpoint(String fullName) : super(
+      path: 'repos/$fullName/issues',
+      method: HttpMethod.get,
+      headers: {},
+      parameters: {}
+  );
+}

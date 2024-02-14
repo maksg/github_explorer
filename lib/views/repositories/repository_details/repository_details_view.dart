@@ -4,6 +4,8 @@ import 'package:github_explorer/custom_views/archived_badge_view.dart';
 import 'package:github_explorer/custom_views/avatar_image.dart';
 import 'package:github_explorer/extensions/date_time_time_ago.dart';
 import 'package:github_explorer/views/repositories/repository_details/repository_details_view_model.dart';
+import 'package:github_explorer/views/repositories/repository_details/repository_issues/repository_issues_view.dart';
+import 'package:github_explorer/views/repositories/repository_details/repository_issues/repository_issues_view_model.dart';
 
 class RepositoryDetailsView extends StatelessWidget {
   final RepositoryDetailsViewModel viewModel;
@@ -26,7 +28,7 @@ class RepositoryDetailsView extends StatelessWidget {
             divider(),
             infoViews(),
             divider(),
-            openIssuesView(),
+            openIssuesView(context),
             divider(),
             lastUpdatedView(),
           ],
@@ -138,31 +140,47 @@ class RepositoryDetailsView extends StatelessWidget {
     );
   }
 
-  Widget openIssuesView() {
+  Widget openIssuesView(BuildContext context) {
     final openIssuesCount = viewModel.repository.openIssuesCount;
-    return itemPadding(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text.rich(
-            TextSpan(
-              children: [
-                const WidgetSpan(alignment: PlaceholderAlignment.middle, child: Icon(Icons.bug_report)),
-                const WidgetSpan(child: SizedBox(width: 10)),
-                const TextSpan(text: 'Issues'),
-                const WidgetSpan(child: SizedBox(width: 10)),
-                WidgetSpan(
-                  alignment: PlaceholderAlignment.middle,
-                  child: Container(
-                    decoration: BoxDecoration(color: Colors.grey.withOpacity(0.5), borderRadius: BorderRadius.circular(20)),
-                    padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 6),
-                    child: Text('$openIssuesCount'),
+    return InkWell(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) =>
+              RepositoryIssuesView(
+                viewModel: RepositoryIssuesViewModel(
+                  apiRequest: viewModel.apiRequest,
+                  repository: viewModel.repository
+                )
+              )
+          )
+        );
+      },
+      child: itemPadding(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text.rich(
+              TextSpan(
+                children: [
+                  const WidgetSpan(alignment: PlaceholderAlignment.middle, child: Icon(Icons.bug_report)),
+                  const WidgetSpan(child: SizedBox(width: 10)),
+                  const TextSpan(text: 'Issues'),
+                  const WidgetSpan(child: SizedBox(width: 10)),
+                  WidgetSpan(
+                    alignment: PlaceholderAlignment.middle,
+                    child: Container(
+                      decoration: BoxDecoration(color: Colors.grey.withOpacity(0.5), borderRadius: BorderRadius.circular(20)),
+                      padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 6),
+                      child: Text('$openIssuesCount'),
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

@@ -6,13 +6,13 @@ import 'package:github_explorer/views/repositories/repositories_view.dart';
 import 'package:github_explorer/views/repositories/repositories_view_model.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  final RepositoriesViewModel viewModel = RepositoriesViewModel(apiRequest: const APIRequest(RequestManager()));
 
-  final APIRequest apiRequest = const APIRequest(RequestManager());
+  MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.indigo),
         searchBarTheme: SearchBarThemeData(shadowColor: MaterialStateProperty.all(Colors.transparent)),
       ),
-      home: RepositoriesView(viewModel: RepositoriesViewModel(apiRequest: apiRequest)),
+      home: RepositoriesView(viewModel: viewModel),
     );
   }
 }
