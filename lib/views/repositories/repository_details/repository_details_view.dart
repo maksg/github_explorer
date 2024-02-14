@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import 'package:github_explorer/custom_views/archived_badge_view.dart';
 import 'package:github_explorer/custom_views/avatar_image.dart';
@@ -10,7 +11,7 @@ import 'package:github_explorer/views/repositories/repository_details/repository
 class RepositoryDetailsView extends StatelessWidget {
   final RepositoryDetailsViewModel viewModel;
 
-  const RepositoryDetailsView({super.key, required this.viewModel});
+  const RepositoryDetailsView({ super.key, required this.viewModel });
 
   @override
   Widget build(BuildContext context) {
@@ -91,18 +92,31 @@ class RepositoryDetailsView extends StatelessWidget {
     );
   }
 
-  Widget infoView(IconData iconData, String text) {
+  Widget infoView(IconData iconData, String text, {Color? color}) {
     return itemPadding(
       child: Text.rich(
         TextSpan(
           children: [
             WidgetSpan(alignment: PlaceholderAlignment.middle, child: Icon(iconData)),
             const WidgetSpan(child: SizedBox(width: 10)),
-            TextSpan(text: text),
+            TextSpan(text: text, style: TextStyle(color: color)),
           ]
         ),
       ),
     );
+  }
+
+  Widget? homepageView() {
+    final homepageURL = viewModel.repository.homepageURL;
+    if (homepageURL != null) {
+      return InkWell(
+        onTap: () {
+          launchUrl(homepageURL);
+        },
+        child: infoView(Icons.link, homepageURL.host + homepageURL.path, color: Colors.indigoAccent),
+      );
+    }
+    return null;
   }
   
   Widget? licenseView() {
@@ -132,6 +146,7 @@ class RepositoryDetailsView extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        homepageView(),
         licenseView(),
         stargazersView(),
         forksView(),

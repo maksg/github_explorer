@@ -11,7 +11,7 @@ class RepositoriesRow extends StatelessWidget {
   final Repository repository;
   final APIRequest apiRequest;
 
-  const RepositoriesRow({super.key, required this.repository, required this.apiRequest});
+  const RepositoriesRow({ super.key, required this.repository, required this.apiRequest });
 
   @override
   Widget build(BuildContext context) {

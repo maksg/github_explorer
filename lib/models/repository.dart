@@ -7,6 +7,7 @@ class Repository {
   String? avatarURL;
   String description;
   DateTime pushedAt;
+  Uri? homepageURL;
   int stargazersCount;
   int forksCount;
   String language;
@@ -21,6 +22,7 @@ class Repository {
     this.avatarURL,
     required this.description,
     required this.pushedAt,
+    this.homepageURL,
     required this.stargazersCount,
     required this.forksCount,
     required this.language,
@@ -40,6 +42,7 @@ class RepositorySerializer extends Serializer<Repository> {
       avatarURL: json['owner']['avatar_url'],
       description: json['description'] ?? '',
       pushedAt: DateTime.tryParse(json['pushed_at']) ?? DateTime.now(),
+      homepageURL: Uri.tryParse(json['homepage']  ?? ''),
       stargazersCount: json['stargazers_count'] ?? 0,
       forksCount: json['forks_count'] ?? 0,
       language: json['language'] ?? '',

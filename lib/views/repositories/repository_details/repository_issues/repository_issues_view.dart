@@ -6,7 +6,7 @@ import 'package:github_explorer/views/repositories/repository_details/repository
 class RepositoryIssuesView extends StatefulWidget {
   final RepositoryIssuesViewModel viewModel;
 
-  const RepositoryIssuesView({super.key, required this.viewModel});
+  const RepositoryIssuesView({ super.key, required this.viewModel });
 
   @override
   RepositoriesViewState createState() => RepositoriesViewState();
@@ -25,9 +25,10 @@ class RepositoriesViewState extends State<RepositoryIssuesView> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.primary,
+        foregroundColor: Colors.white,
         title: Text(
           '${widget.viewModel.repository.openIssuesCount} open issues',
-          style: const TextStyle(color: Colors.white),
+          style: const TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
         ),
       ),
       body: listView(),

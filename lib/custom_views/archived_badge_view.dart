@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class ArchivedBadgeView extends StatelessWidget {
-  const ArchivedBadgeView({super.key});
+  const ArchivedBadgeView({ super.key });
 
   @override
   Widget build(BuildContext context) {

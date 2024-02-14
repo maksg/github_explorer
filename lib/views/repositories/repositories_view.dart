@@ -6,7 +6,7 @@ import 'package:github_explorer/views/repositories/rows/repositories_row.dart';
 class RepositoriesView extends StatefulWidget {
   final RepositoriesViewModel viewModel;
 
-  const RepositoriesView({super.key, required this.viewModel});
+  const RepositoriesView({ super.key, required this.viewModel });
 
   @override
   RepositoriesViewState createState() => RepositoriesViewState();
@@ -26,7 +26,7 @@ class RepositoriesViewState extends State<RepositoriesView> {
         backgroundColor: Theme.of(context).colorScheme.primary,
         title: const Text(
           'Repositories',
-          style: TextStyle(color: Colors.white),
+          style: TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
         ),
       ),
       body: Column(
