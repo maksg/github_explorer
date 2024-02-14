@@ -51,10 +51,22 @@ void main() {
       expect(timeAgoText, '4 days ago');
     });
 
-    test('DateTime.now() - 7 days should return \'last week\'', () async {
+    test('DateTime.now() - 7 days should return \'a week ago\'', () async {
       final date = DateTime.now().add(const Duration(days: -7));
       final timeAgoText = date.timeAgo();
-      expect(timeAgoText, 'last week');
+      expect(timeAgoText, 'a week ago');
+    });
+
+    test('DateTime.now() - 14 days should return \'2 weeks ago\'', () async {
+      final date = DateTime.now().add(const Duration(days: -14));
+      final timeAgoText = date.timeAgo();
+      expect(timeAgoText, '2 weeks ago');
+    });
+
+    test('DateTime.parse(\'2023-02-08T19:30:53Z\') should return \'on Feb 8, 2023\'', () async {
+      final date = DateTime.parse('2023-02-08T19:30:53Z');
+      final timeAgoText = date.timeAgo();
+      expect(timeAgoText, 'on Feb 8, 2023');
     });
   });
 }
