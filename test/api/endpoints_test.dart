@@ -13,5 +13,14 @@ void main() {
       expect(endpoint.headers, {});
       expect(endpoint.parameters, { 'q' : query });
     });
+
+    test('RepositoryIssuesEndpoint should return valid Route parameters', () {
+      const fullName = 'axmolengine/axmol';
+      final endpoint = RepositoryIssuesEndpoint(fullName);
+      expect(endpoint.path, 'repos/$fullName/issues');
+      expect(endpoint.method, HttpMethod.get);
+      expect(endpoint.headers, {});
+      expect(endpoint.parameters, {});
+    });
   });
 }
