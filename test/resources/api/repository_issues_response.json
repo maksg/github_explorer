@@ -1,0 +1,74 @@
+[
+  {
+    "url": "https://api.github.com/repos/axmolengine/axmol/issues/1659",
+    "repository_url": "https://api.github.com/repos/axmolengine/axmol",
+    "labels_url": "https://api.github.com/repos/axmolengine/axmol/issues/1659/labels{/name}",
+    "comments_url": "https://api.github.com/repos/axmolengine/axmol/issues/1659/comments",
+    "events_url": "https://api.github.com/repos/axmolengine/axmol/issues/1659/events",
+    "html_url": "https://github.com/axmolengine/axmol/issues/1659",
+    "id": 2125926794,
+    "node_id": "I_kwDODVPZac5-txGK",
+    "number": 1659,
+    "title": "Support for visionOS",
+    "user": {
+      "login": "paulocoutinhox",
+      "id": 395096,
+      "node_id": "MDQ6VXNlcjM5NTA5Ng==",
+      "avatar_url": "https://avatars.githubusercontent.com/u/395096?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/paulocoutinhox",
+      "html_url": "https://github.com/paulocoutinhox",
+      "followers_url": "https://api.github.com/users/paulocoutinhox/followers",
+      "following_url": "https://api.github.com/users/paulocoutinhox/following{/other_user}",
+      "gists_url": "https://api.github.com/users/paulocoutinhox/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/paulocoutinhox/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/paulocoutinhox/subscriptions",
+      "organizations_url": "https://api.github.com/users/paulocoutinhox/orgs",
+      "repos_url": "https://api.github.com/users/paulocoutinhox/repos",
+      "events_url": "https://api.github.com/users/paulocoutinhox/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/paulocoutinhox/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 1693827677,
+        "node_id": "MDU6TGFiZWwxNjkzODI3Njc3",
+        "url": "https://api.github.com/repos/axmolengine/axmol/labels/help%20wanted",
+        "name": "help wanted",
+        "color": "008672",
+        "default": true,
+        "description": "Extra attention is needed"
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 1,
+    "created_at": "2024-02-08T19:30:53Z",
+    "updated_at": "2024-02-09T18:03:10Z",
+    "closed_at": null,
+    "author_association": "CONTRIBUTOR",
+    "active_lock_reason": null,
+    "body": "**Is your feature request related to a problem? Please describe.**\r\n\r\nHi,\r\n\r\nHow we can add support for visionOS?\r\n\r\nI want port my game to it.\r\n\r\nThanks.\r\n\r\n**Describe the solution you'd like**\r\n\r\nWhen build, we can adopt these settings for cmake and other (if need):\r\n\r\n```\r\nmin version: 1.0\r\nsimulator sdk name: xrsimulator\r\ndevice sdk name: xros\r\napple triplet for simulator x64: x86_64-apple-xros1.0-simulator\r\napple triplet for simulator arm64: arm64-apple-xros1.0-simulator\r\napple triplet for device arm64: arm64-apple-xros1.0\r\ncmake system name: visionOS\r\n```\r\n\r\nSome docs:\r\n- https://developer.apple.com/visionos/\r\n- https://developer.apple.com/documentation/visionos/interacting-with-your-app-in-the-visionos-simulator\r\n",
+    "reactions": {
+      "url": "https://api.github.com/repos/axmolengine/axmol/issues/1659/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/axmolengine/axmol/issues/1659/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null
+  }
+]
